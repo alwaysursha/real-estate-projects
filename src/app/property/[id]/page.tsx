@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { getPropertyById } from '../../../data/properties';
+import { getPropertyById, featuredProperties } from '../../../data/properties';
 import Map from '../../../components/Map';
 import { Playfair_Display } from 'next/font/google';
 import Script from 'next/script';
@@ -14,6 +14,13 @@ interface PropertyDetailPageProps {
   params: {
     id: string;
   };
+}
+
+// This function generates all possible property IDs at build time
+export async function generateStaticParams() {
+  return featuredProperties.map((property) => ({
+    id: property.id.toString(),
+  }));
 }
 
 export default function PropertyDetailPage({ params }: PropertyDetailPageProps) {

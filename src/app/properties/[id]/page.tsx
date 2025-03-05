@@ -6,11 +6,18 @@ import Link from 'next/link'
 import Script from 'next/script'
 import { Playfair_Display } from 'next/font/google'
 import Map from '@/components/Map'
-import { getPropertyById } from '@/data/properties'
+import { getPropertyById, featuredProperties } from '@/data/properties'
 import { Property } from '@/types/property'
 import { notFound } from 'next/navigation'
 
 const playfair = Playfair_Display({ subsets: ['latin'] })
+
+// This function generates all possible property IDs at build time
+export async function generateStaticParams() {
+  return featuredProperties.map((property) => ({
+    id: property.id.toString(),
+  }));
+}
 
 export default function PropertyPage({ params }: { params: { id: string } }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
