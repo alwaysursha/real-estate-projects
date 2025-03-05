@@ -11,9 +11,6 @@ const nextConfig = {
       },
     ],
   },
-  experimental: {
-    appDir: true,
-  },
   trailingSlash: true,
 };
 
