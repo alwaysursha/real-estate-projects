@@ -16,13 +16,6 @@ interface PropertyDetailPageProps {
   };
 }
 
-// This function generates all possible property IDs at build time
-export async function generateStaticParams() {
-  return featuredProperties.map((property) => ({
-    id: property.id.toString(),
-  }));
-}
-
 export default function PropertyDetailPage({ params }: PropertyDetailPageProps) {
   const property = getPropertyById(params.id);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
