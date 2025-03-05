@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
+  output: 'export',
   images: {
     unoptimized: true,
     domains: ['images.unsplash.com', 'plus.unsplash.com'],
@@ -11,6 +11,10 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    appDir: true,
+  },
+  trailingSlash: true,
 };
 
 module.exports = nextConfig; 
